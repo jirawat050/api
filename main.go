@@ -9,12 +9,18 @@ import (
 )
 
 func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 	r := httprouter.New()
 	uc := controllers.NewUserController(getSession())
-    r.GET("/hospital/:id", uc.GetUser)
-    r.GET("/hospital", uc.GetAllUser)
-	
-	http.ListenAndServe("localhost:8080", r)
+	r.GET("/hospital/:id", uc.GetUser)
+    	r.GET("/hospital", uc.GetAllUser)
+    	r.GET("/", uc.GetAllUser)
+
+	http.ListenAndServe(":"+port, r)
+}
 }
 
 func getSession() *mgo.Session {
