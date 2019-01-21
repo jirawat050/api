@@ -11,5 +11,5 @@ type User struct {
 	Name      string        `json:"name" bson:"name"`
 	Away      string        `json:"away" bson:"away"`
 	Link      string        `json:"link" bson:"link"`
-	CreatedAt time.Time     `bson:"createdAt"`
+	CreatedAt time.Time     `json:"createdAt" bson:"createdAt"`
 }
